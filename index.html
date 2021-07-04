@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country Details</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/d56d18e9db.js" crossorigin="anonymous"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Qahiri&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
+        /* font-family: 'Qahiri', sans-serif; */
+        /* font-family: 'Staatliches', cursive; */
+        /* font-family: 'Handlee', cursive; */
+        /* font-family: 'Sacramento', cursive; */
+        /* font-family: 'Pacifico', cursive; */
+        /* font-family: 'Concert One', cursive; */
+        /*  background: linear-gradient(to left,#87adfe, #ff77cd); */
+
+        body {
+            background-image: url(https://pngimage.net/wp-content/uploads/2019/05/thunder-neon-png-1.png);
+            background-size: cover;
+        }
+
+        h1 {
+            font-family: 'Concert One', cursive;
+            color: rgb(106, 46, 247);
+        }
+
+        .navbar {
+            background-color: rgb(255, 255, 255);
+        }
+
+        li {
+            font-family: 'Staatliches', cursive;
+            color: blueviolet;
+        }
+
+        i {
+            color: rgb(245, 167, 78);
+            background-color: #FFFFFF;
+        }
+
+        input {
+            width: 150px;
+            height: 50px;
+            border-radius: 4%;
+            border: none;
+        }
+        button{
+            border:solid wheat 1px;
+            border-radius: 5%;
+            height: 50px;
+            background-color: rgb(83, 3, 73);
+            color: rgb(241, 229, 232);
+        }
+        .card-title{
+            color: rgb(255, 255, 255);
+            font-family: 'Staatliches', cursive;
+            font-size: 26px; 
+        }
+        .card-text{
+            color: rgb(255, 255, 255);
+            font-family: 'Concert One', cursive;
+            font-size: 20px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light   sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><img src="https://acegif.com/wp-content/gifs/globe-9.gif" alt=""
+                    width="60px"></a>
+
+            <h1 class="ms-5">COUNTRY DETAILS</h1>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto  mb-lg-0">
+                    <li class="nav-item me-5">
+                        <a class="nav-link active" aria-current="page" href="#"><i class="fas fa-home"></i>Home</a>
+                    </li>
+                    <li class="nav-item me-5">
+                        <a class="nav-link active" href="#"><i class="fas mb-2  fa-pen"></i>Blog</a>
+                    </li>
+                    <li class="nav-item me-5">
+                        <a class="nav-link active" href="#"><i class="fas mb-2  fa-wrench"></i>Tools</a>
+                    </li>
+                    <li class="nav-item me-5">
+                        <a class="nav-link active" href="#"><i class="fas mb-2  fa-trophy"></i>Awards</a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+    <!-- navbar ends here -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <input type="text" placeholder="enter country name" id="country">
+                <button onclick="fetchCountry()">Search</button>
+
+            </div>
+            <div class="col-4"></div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-4"></div>
+            <div class="col-4" id="result">
+
+            </div>
+            <div class="col-4"></div>
+        </div>
+    </div>
+    <div class="marq">
+        <div class="row container-fluid">
+            
+
+        </div>
+    </div>
+
+
+
+</body>
+<script>
+    function displayValues(country) {
+        let name = country[0].name
+        let population = country[0].population
+        let flag = country[0].flag
+        let cu_name = country[0].currencies[0].name
+        let symbol = country[0].currencies[0].symbol
+        console.log(name, population, flag, cu_name, symbol);
+        let html_data = `<div class="card" style="width: 18rem;">
+  <img src="${flag}" class="card-img-top" alt="..."></div>
+  <div class="card-body">
+    <h5 class="card-title">Name: ${name}</h5>
+    <p class="card-text">population: ${population}</p>
+    <p class="card-text">Currency name: ${cu_name}</p>
+    <p class="card-text">Symbol: ${symbol}</p>
+  </div>
+`
+        result.innerHTML = html_data
+
+    }
+
+    function fetchCountry() {
+
+        let country_name = country.value
+        let url = `https://restcountries.eu/rest/v2/name/${country_name}?fullText=true`
+        fetch(url).then(res => {
+            if (!(res.ok)) {
+                throw new Error("failed to fetch data")
+            }
+            else {
+                return res.json()
+            }
+        }).then(data => displayValues(data)).catch(error => alert(error.message))
+        // fetch by dwfault use "get" method =>then=promise, if success=>response changed to json
+        // which is then called data => displayed in html page
+    }
+
+    // function fetchCountry() {
+    //     let country_name = country.value
+    //     let url = `https://restcountries.eu/rest/v2/name/${country_name}?fullText=true`
+    //     let request = new XMLHttpRequest()
+    //     request.open("get", url)
+    //     request.send()
+    //     request.onreadystatechange = () => {
+    //         if (request.readyState == 4) {
+    //             if (request.status > 199 & request.status < 300) {
+    //                 let data = JSON.parse(request.responseText)
+    //                 console.log(data);
+    //                 displayValues(data)
+
+
+    //             }
+    //         }
+    //     }
+
+
+    // }
+</script>
+
+</html>
