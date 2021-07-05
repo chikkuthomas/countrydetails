@@ -23,13 +23,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
         @import url('https://fonts.googleapis.com/css2?family=Concert+One&display=swap');
-        /* font-family: 'Qahiri', sans-serif; */
-        /* font-family: 'Staatliches', cursive; */
-        /* font-family: 'Handlee', cursive; */
-        /* font-family: 'Sacramento', cursive; */
-        /* font-family: 'Pacifico', cursive; */
-        /* font-family: 'Concert One', cursive; */
-        /*  background: linear-gradient(to left,#87adfe, #ff77cd); */
+      
 
         body {
             background-image: url(https://pngimage.net/wp-content/uploads/2019/05/thunder-neon-png-1.png);
@@ -179,30 +173,9 @@
                 return res.json()
             }
         }).then(data => displayValues(data)).catch(error => alert(error.message))
-        // fetch by dwfault use "get" method =>then=promise, if success=>response changed to json
-        // which is then called data => displayed in html page
     }
 
-    // function fetchCountry() {
-    //     let country_name = country.value
-    //     let url = `https://restcountries.eu/rest/v2/name/${country_name}?fullText=true`
-    //     let request = new XMLHttpRequest()
-    //     request.open("get", url)
-    //     request.send()
-    //     request.onreadystatechange = () => {
-    //         if (request.readyState == 4) {
-    //             if (request.status > 199 & request.status < 300) {
-    //                 let data = JSON.parse(request.responseText)
-    //                 console.log(data);
-    //                 displayValues(data)
 
-
-    //             }
-    //         }
-    //     }
-
-
-    // }
 </script>
 
 </html>
